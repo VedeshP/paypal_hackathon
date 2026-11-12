@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    image: mandate-gateway:latest
+    env_file: .env
+    environment:
+      DB_PATH: /srv/data/mandate.db
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:8000}
+    ports:
+      - "8000:8000"
+    volumes:
+      - mandate-data:/srv/data
+    restart: unless-stopped
+
+volumes:
+  mandate-data:

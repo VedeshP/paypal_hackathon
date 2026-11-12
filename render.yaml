@@ -1,0 +1,64 @@
+# Render Blueprint: Mandate
+# - web: Docker image (React UI + FastAPI + FastMCP gateway) with a persistent disk for SQLite
+# - cron: wakes standing mandates every 15 minutes
+# The Render Workflows service (Attack Lab fan-out) is created in the Dashboard:
+#   New > Workflow, repo root, runtime Python, build `pip install -r backend/requirements.txt`,
+#   start `cd backend && python workflows_main.py`, then set RENDER_WORKFLOW_SLUG on the web service.
+services:
+  - type: web
+    name: mandate
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    region: oregon
+    healthCheckPath: /api/health
+    disk:
+      name: mandate-data
+      mountPath: /srv/data
+      sizeGB: 1
+    envVars:
+      - key: DB_PATH
+        value: /srv/data/mandate.db
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: MANDATE_SIGNING_SECRET
+        generateValue: true
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: CHANNEL3_API_KEY
+        sync: false
+      - key: ELASTIC_URL
+        sync: false
+      - key: ELASTIC_API_KEY
+        sync: false
+      - key: KERNEL_API_KEY
+        sync: false
+      - key: RENDER_API_KEY
+        sync: false
+      - key: RENDER_WORKFLOW_SLUG
+        sync: false
+      - key: ZAPIER_MCP_TOKEN
+        sync: false
+      - key: NOTIFY_EMAIL
+        sync: false
+
+  - type: cron
+    name: mandate-standing-watcher
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    region: oregon
+    schedule: "*/15 * * * *"
+    dockerCommand: sh -c "python -c \"import httpx,os; print(httpx.post(os.environ['PUBLIC_BASE_URL']+'/api/watcher/tick', timeout=60).text)\""
+    envVars:
+      - key: PUBLIC_BASE_URL
+        sync: false

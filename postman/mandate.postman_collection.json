@@ -1,0 +1,600 @@
+{
+ "info": {
+  "name": "Mandate Gateway API",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+  "description": "REST API of the Mandate Gateway. MCP endpoint: {{baseUrl}}/mcp/"
+ },
+ "variable": [
+  {
+   "key": "baseUrl",
+   "value": "http://localhost:8000"
+  }
+ ],
+ "item": [
+  {
+   "name": "Health",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/health",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "health"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Compile Mandate",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/mandates/compile",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "mandates",
+      "compile"
+     ]
+    },
+    "body": {
+     "mode": "raw",
+     "raw": "{}",
+     "options": {
+      "raw": {
+       "language": "json"
+      }
+     }
+    }
+   }
+  },
+  {
+   "name": "List Mandates",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/mandates",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "mandates"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Create Mandate",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/mandates",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "mandates"
+     ]
+    },
+    "body": {
+     "mode": "raw",
+     "raw": "{}",
+     "options": {
+      "raw": {
+       "language": "json"
+      }
+     }
+    }
+   }
+  },
+  {
+   "name": "Get Mandate",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/mandates/{mid}",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "mandates",
+      "{mid}"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Revoke",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/mandates/{mid}/revoke",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "mandates",
+      "{mid}",
+      "revoke"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Paypal Return",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/paypal/return",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "paypal",
+      "return"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Start Run",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/runs",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "runs"
+     ]
+    },
+    "body": {
+     "mode": "raw",
+     "raw": "{}",
+     "options": {
+      "raw": {
+       "language": "json"
+      }
+     }
+    }
+   }
+  },
+  {
+   "name": "Get Run",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/runs/{rid}",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "runs",
+      "{rid}"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Stream",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/runs/{rid}/stream",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "runs",
+      "{rid}",
+      "stream"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Approvals",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/approvals",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "approvals"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Decide",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/approvals/{aid}",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "approvals",
+      "{aid}"
+     ]
+    },
+    "body": {
+     "mode": "raw",
+     "raw": "{}",
+     "options": {
+      "raw": {
+       "language": "json"
+      }
+     }
+    }
+   }
+  },
+  {
+   "name": "Lab Scenarios",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/lab/scenarios",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "lab",
+      "scenarios"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Latest Labs",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/lab",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "lab"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Start Lab",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/lab",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "lab"
+     ]
+    },
+    "body": {
+     "mode": "raw",
+     "raw": "{}",
+     "options": {
+      "raw": {
+       "language": "json"
+      }
+     }
+    }
+   }
+  },
+  {
+   "name": "Get Lab",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/lab/{lid}",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "lab",
+      "{lid}"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Events",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/events",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "events"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Stats",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/stats",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "stats"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Auditor Setup",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/auditor/setup",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "auditor",
+      "setup"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Auditor Ask",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/auditor/ask",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "auditor",
+      "ask"
+     ]
+    },
+    "body": {
+     "mode": "raw",
+     "raw": "{}",
+     "options": {
+      "raw": {
+       "language": "json"
+      }
+     }
+    }
+   }
+  },
+  {
+   "name": "Watcher Tick",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/watcher/tick",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "watcher",
+      "tick"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Data",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/studio/data",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "studio",
+      "data"
+     ]
+    }
+   }
+  },
+  {
+   "name": "Turn",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": {
+     "raw": "{{baseUrl}}/api/studio/turn",
+     "host": [
+      "{{baseUrl}}"
+     ],
+     "path": [
+      "api",
+      "studio",
+      "turn"
+     ]
+    },
+    "body": {
+     "mode": "raw",
+     "raw": "{}",
+     "options": {
+      "raw": {
+       "language": "json"
+      }
+     }
+    }
+   }
+  }
+ ]
+}
