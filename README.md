@@ -4,6 +4,8 @@
 
 Agents are getting wallets (AP2, ACP, PayPal agentic commerce). A shopping agent with a wallet that reads untrusted product pages has all three parts of the "lethal trifecta". Mandate is the seatbelt.
 
+**Live demo:** https://mandate-gateway-4g7x.onrender.com (PayPal sandbox; sign in with PayPal or "Continue as demo judge"; sandbox buyer credentials are shown on the login page). MCP endpoint: `https://mandate-gateway-4g7x.onrender.com/mcp/`
+
 ## What it does
 1. **Mandate Studio.** Natural language goes to an LLM compiler, which produces a least-privilege policy (budget, per-item cap, quantity, stores, expiry, ask-me-above threshold). The policy is HMAC-signed, like AP2 intent mandates.
 2. **PayPal-backed budget.** Signing creates a PayPal **AUTHORIZE** order for the budget. The buyer approves once; agents can later **capture only what the gateway allows**, and revoking **voids the hold and refunds the captures**.
