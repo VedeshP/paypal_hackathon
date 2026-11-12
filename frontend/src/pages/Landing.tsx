@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ShieldCheck, ArrowRight, Lock, Bot, Search, MonitorPlay, CreditCard, ShieldX, ShieldAlert, Sparkles, Plug,
+  ShieldCheck, ArrowRight, Lock, Bot, Search, MonitorPlay, CreditCard, ShieldX, ShieldAlert, Plug,
   FlaskConical, Database, LayoutDashboard, Workflow, ChevronDown, FileSignature,
 } from "lucide-react";
 import { api } from "../api";
 
-const STACK = ["PayPal", "Channel3", "KERNEL", "Elastic", "AG Grid", "Render", "Gemini", "Groq", "FastMCP"];
+const STACK: [string, string][] = [
+  ["PayPal", "paypal.svg"], ["Channel3", "channel3.svg"], ["KERNEL", "kernel.svg"], ["Elastic", "elastic.svg"],
+  ["AG Grid", "aggrid.png"], ["Render", "render.svg"], ["Gemini", "gemini.svg"], ["Groq", "groq.svg"],
+  ["FastAPI", "fastapi.svg"], ["FastMCP", "fastmcp.svg"],
+];
 
 export default function Landing() {
   const [sum, setSum] = useState<any>(null);
@@ -16,7 +20,7 @@ export default function Landing() {
   return (
     <div className="h-screen overflow-y-auto snap-y snap-mandatory bg-white text-ink">
       {/* ---------------------------------------------------------------- 1. HERO */}
-      <section className="snap-start min-h-screen flex flex-col px-6 md:px-12 pt-6 pb-8">
+      <section className="snap-start h-screen min-h-[640px] flex flex-col px-6 md:px-12 pt-5 pb-5">
         <nav className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="h-9 w-9 rounded-xl bg-lime grid place-items-center text-brand-dark"><ShieldCheck size={20} /></div>
@@ -31,19 +35,16 @@ export default function Landing() {
           <Link to="/login" className="rounded-full bg-ink text-white text-sm font-semibold px-5 py-2.5 hover:bg-brand-dark">Open the app</Link>
         </nav>
 
-        <div className="text-center mt-10 md:mt-14">
-          <div className="inline-flex items-center gap-2 rounded-full bg-lime-soft text-pine text-xs font-semibold px-3 py-1">
-            <Sparkles size={12} /> Agentic commerce, with a seatbelt
-          </div>
-          <h1 className="mt-5 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
+        <div className="text-center mt-6 md:mt-8">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
             Let AI agents spend your money<br />
             <span className="bg-gradient-to-r from-brand to-lime-deep bg-clip-text text-transparent">only the way you said.</span>
           </h1>
-          <p className="mt-5 text-ink-muted max-w-2xl mx-auto">
+          <p className="mt-4 text-ink-muted max-w-2xl mx-auto">
             Mandate turns a plain-English wish into a signed spending policy backed by a PayPal authorization hold,
             and checks every purchase an agent makes - so prompt injection can't talk its way into your wallet.
           </p>
-          <div className="mt-7 flex items-center justify-center gap-3">
+          <div className="mt-5 flex items-center justify-center gap-3">
             <Link to="/login" className="rounded-full bg-ink text-white font-semibold px-6 py-3 inline-flex items-center gap-2 hover:bg-brand-dark">
               Sign in with PayPal <ArrowRight size={16} />
             </Link>
@@ -52,7 +53,7 @@ export default function Landing() {
         </div>
 
         {/* hero card */}
-        <div className="relative mt-10 flex-1 min-h-[340px] rounded-[2rem] overflow-hidden bg-gradient-to-br from-lime via-[#E4F7B5] to-[#BFE8D2]">
+        <div className="relative mt-6 flex-1 min-h-[280px] rounded-[2rem] overflow-hidden bg-gradient-to-br from-lime via-[#E4F7B5] to-[#BFE8D2]">
           <div className="absolute -left-20 -bottom-24 h-80 w-80 rounded-full bg-white/40 blur-2xl" />
           <div className="absolute right-10 -top-16 h-72 w-72 rounded-full bg-pine/20 blur-3xl" />
 
@@ -79,8 +80,12 @@ export default function Landing() {
           <Float className="right-[4%] bottom-[14%]" icon={CreditCard} tone="bg-[#FFF4D1] text-[#003087]" title="PayPal capture" body="COMPLETED · $25.99 from the hold" />
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-2 text-ink-muted font-bold tracking-tight">
-          {STACK.map((s) => <span key={s} className="text-sm md:text-base">{s}</span>)}
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          {STACK.map(([name, logo]) => (
+            <span key={name} className="flex items-center gap-2 text-ink/80 font-extrabold tracking-tight text-base md:text-lg">
+              <img src={`/logos/${logo}`} alt="" className="h-7 w-7 object-contain" />{name}
+            </span>
+          ))}
         </div>
       </section>
 
